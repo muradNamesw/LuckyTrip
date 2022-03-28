@@ -296,7 +296,7 @@ object NetworkHandler {
                 val extension = file?.name?.substring(file.name.lastIndexOf("."))
                 var newFileName= file
 
-                if(StringUtils.isProbablyArabic(file?.name?.replace(extension?:"",""))){
+                if(StringUtils.isProbablyArabic(file?.name!!.replace(extension?:"",""))){
                     val stamp = Date().toString("yyyy-MM-dd hh-mm-ss")
                     val suggestedName = String.format("t_%s.pdf", stamp)
 

@@ -14,7 +14,7 @@ import com.tacme.news.view.utils.FontUtils
 
 class CustomTextView : AppCompatTextView, Checkable {
     private var mChecked = false
-    private var background: Drawable? = null
+//    private var background: Drawable? = null
 
     constructor(context: Context?) : super(context) {
         init(null)

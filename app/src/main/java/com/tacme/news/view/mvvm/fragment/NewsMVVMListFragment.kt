@@ -142,21 +142,21 @@ class NewsMVVMListFragment : RootFragment()  {
             android.R.color.holo_blue_dark
         )
 
-
-
-        binding.recyclerView?.addOnScrollListener(object :
-            EndlessRecyclerViewScrollListener(linearLayoutManager) {
-
-            public override fun onLoadMore(
-                page: Int,
-                totalItemsCount: Int,
-                view: androidx.recyclerview.widget.RecyclerView
-            ) {
-
-                viewModel?.loadNext(activity)
-
-            }
-        })
+//        binding.recyclerView?.addOnScrollListener()
+//        binding.recyclerView?.addOnScrollListener()
+//        binding.recyclerView?.addOnScrollListener(
+//            EndlessRecyclerViewScrollListener(linearLayoutManager) {
+//
+//            public override fun onLoadMore(
+//                page: Int,
+//                totalItemsCount: Int,
+//                view: androidx.recyclerview.widget.RecyclerView
+//            ) {
+//
+//                viewModel?.loadNext(activity)
+//
+//            }
+//        })
 
 
 

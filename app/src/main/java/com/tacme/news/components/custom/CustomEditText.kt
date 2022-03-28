@@ -14,7 +14,7 @@ import android.view.KeyEvent
 import com.tacme.news.components.custom.CustomEditText.DrawableClickListener.DrawablePosition
 import android.view.MotionEvent
 import com.tacme.news.view.utils.FontUtils
-import kotlin.Throws
+//import kotlin.Throws
 
 class CustomEditText : AppCompatEditText {
     private var drawableRight: Drawable? = null
@@ -23,7 +23,7 @@ class CustomEditText : AppCompatEditText {
     private var drawableBottom: Drawable? = null
     var actionX = 0
     var actionY = 0
-    private var background: Drawable? = null
+//    private var background: Drawable? = null
     override fun setCompoundDrawables(
         left: Drawable?,
         top: Drawable?,
@@ -222,7 +222,7 @@ class CustomEditText : AppCompatEditText {
         drawableBottom = null
         drawableLeft = null
         drawableTop = null
-        super.finalize()
+//        super.finalize()
     }
 
     fun setDrawableClickListener(listener: DrawableClickListener?) {
