@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/muradadnan/Desktop/project/LuckyTrip/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main_mvvm.xml",
+        "source": "/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/res/layout/activity_main_mvvm.xml"
+    },
+    {
+        "merged": "/Users/muradadnan/Desktop/project/LuckyTrip/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_mvvm_news_list.xml",
+        "source": "/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/res/layout/fragment_mvvm_news_list.xml"
+    },
+    {
+        "merged": "/Users/muradadnan/Desktop/project/LuckyTrip/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/list_navigate_item_mvvm.xml",
+        "source": "/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/res/layout/list_navigate_item_mvvm.xml"
+    }
+]

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                       
+                                                          
+                                                   
+
+    
+
+                 
+                          
+                             
+
+                 
+                           
+                                                                          
+
+
+           
+
+    <FrameLayout
+        android:background="@color/lightGray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:tag="layout/fragment_mvvm_news_list_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:custom="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/listContainerLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/value20"
+                    android:orientation="vertical"
+                    android:tag="binding_1"                                                               >
+
+
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/swipeRefreshLayout"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                </LinearLayout>
+
+
+    </FrameLayout>
+
+    <!--</FrameLayout>-->
+
+         
+
