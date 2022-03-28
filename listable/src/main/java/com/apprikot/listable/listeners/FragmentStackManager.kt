@@ -1,11 +1,8 @@
-package com.apprikot.listable.listeners;
+package com.apprikot.listable.listeners
 
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.Fragment
 
-public interface FragmentStackManager {
-    void setCurrentTabFragment(Fragment currentTabFragment);
-
-    Fragment getCurrentTabFragment();
-
-    Fragment getCurrentMainFragment();
+interface FragmentStackManager {
+    var currentTabFragment: Fragment?
+    val currentMainFragment: Fragment?
 }

@@ -16,7 +16,7 @@ class AspectRatioFrameLayout : FrameLayout {
     private var mAspectRatio // width/height ratio
             = 0f
 
-    constructor(context: Context?) : super(context) {}
+    constructor(context: Context?) : super(context!!) {}
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(context, attrs)
     }

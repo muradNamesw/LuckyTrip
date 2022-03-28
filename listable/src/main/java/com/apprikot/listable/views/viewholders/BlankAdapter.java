@@ -1,7 +1,8 @@
 package com.apprikot.listable.views.viewholders;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BlankAdapter extends RecyclerView.Adapter {
     @Override

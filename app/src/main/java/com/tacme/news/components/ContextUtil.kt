@@ -53,7 +53,7 @@ object ContextUtil {
                 configuration?.setLocale(locale)
                 configuration?.setLayoutDirection(locale)
 
-                sharedContext?.createConfigurationContext(configuration)
+                sharedContext?.createConfigurationContext(configuration!!)
 
             }
 

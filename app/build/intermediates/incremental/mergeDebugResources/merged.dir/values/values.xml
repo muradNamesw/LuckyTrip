@@ -185,6 +185,7 @@
     <attr format="reference" name="materialThemeOverlay"/>
     <attr format="dimension" name="minTouchTargetSize"/>
     <attr format="reference" name="navigationViewStyle"/>
+    <attr format="reference" name="nestedScrollViewStyle"/>
     <attr format="reference" name="popupMenuBackground"/>
     <attr format="reference" name="recyclerViewStyle"/>
     <attr format="color" name="rippleColor"/>
@@ -216,16 +217,18 @@
     <attr format="string" name="title"/>
     <attr format="boolean" name="useMaterialThemeColors"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
-    <bool name="abc_allow_stacked_button_bar">false</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
     <bool name="mtrl_btn_textappearance_all_caps">true</bool>
-    <color name="abc_input_method_navigation_guard">@android:color/black</color>
+    <color name="abc_decor_view_status_guard">#ff000000</color>
+    <color name="abc_decor_view_status_guard_light">#ffffffff</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
     <color name="accepted">#2AC798</color>
+    <color name="androidx_core_ripple_material_light">#1f000000</color>
+    <color name="androidx_core_secondary_text_default_material_light">#8a000000</color>
     <color name="app_back">#ebebeb</color>
     <color name="app_back2">#FAFAFA</color>
     <color name="arrowColor">#6B6B6B</color>
@@ -489,6 +492,9 @@
     <dimen name="abc_seekbar_track_background_height_material">2dp</dimen>
     <dimen name="abc_seekbar_track_progress_height_material">2dp</dimen>
     <dimen name="abc_select_dialog_padding_start_material">20dp</dimen>
+    <dimen name="abc_star_big">48dp</dimen>
+    <dimen name="abc_star_medium">36dp</dimen>
+    <dimen name="abc_star_small">16dp</dimen>
     <dimen name="abc_switch_padding">3dp</dimen>
     <dimen name="abc_text_size_body_1_material">14sp</dimen>
     <dimen name="abc_text_size_body_2_material">14sp</dimen>
@@ -1035,15 +1041,21 @@
     <item name="save_overlay_view" type="id"/>
     <item name="snackbar_action" type="id"/>
     <item name="snackbar_text" type="id"/>
+    <item name="special_effects_controller_view_tag" type="id"/>
     <item name="split_action_bar" type="id"/>
     <item name="tag_accessibility_actions" type="id"/>
     <item name="tag_accessibility_clickable_spans" type="id"/>
     <item name="tag_accessibility_heading" type="id"/>
     <item name="tag_accessibility_pane_title" type="id"/>
+    <item name="tag_on_apply_window_listener" type="id"/>
+    <item name="tag_on_receive_content_listener" type="id"/>
+    <item name="tag_on_receive_content_mime_types" type="id"/>
     <item name="tag_screen_reader_focusable" type="id"/>
+    <item name="tag_state_description" type="id"/>
     <item name="tag_transition_group" type="id"/>
     <item name="tag_unhandled_key_event_manager" type="id"/>
     <item name="tag_unhandled_key_listeners" type="id"/>
+    <item name="tag_window_insets_animation_callback" type="id"/>
     <item name="text" type="id"/>
     <item name="text2" type="id"/>
     <item name="textWatcher" type="id"/>
@@ -1058,6 +1070,9 @@
     <item name="transition_transform" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
+    <id name="view_tree_lifecycle_owner"/>
+    <id name="view_tree_saved_state_registry_owner"/>
+    <id name="view_tree_view_model_store_owner"/>
     <item name="visible_removing_fragment_view_tag" type="id"/>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
@@ -1568,6 +1583,7 @@
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="actionBarWidgetTheme">@null</item>
         <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="actionModeTheme">?attr/actionBarTheme</item>
 
         <!-- Panel attributes -->
         <item name="listChoiceBackgroundIndicator">@drawable/abc_list_selector_holo_dark</item>
@@ -2225,7 +2241,6 @@
     <item name="materialAlertDialogBodyTextStyle">@style/MaterialAlertDialog.MaterialComponents.Body.Text</item>
   </style>
     <style name="Base.V7.Theme.AppCompat" parent="Platform.AppCompat">
-        <item name="viewInflaterClass">androidx.appcompat.app.AppCompatViewInflater</item>
         <item name="windowNoTitle">false</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionBarOverlay">false</item>
@@ -2266,9 +2281,11 @@
         <item name="actionDropDownStyle">@style/Widget.AppCompat.Spinner.DropDown.ActionBar</item>
 
         <!-- Action Mode -->
+        <item name="actionModeTheme">?attr/actionBarTheme</item>
         <item name="actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
         <item name="actionModeBackground">@drawable/abc_cab_background_top_material</item>
         <item name="actionModeSplitBackground">?attr/colorPrimaryDark</item>
+        <item name="actionModeCloseContentDescription">@string/abc_action_mode_done</item>
         <item name="actionModeCloseDrawable">@drawable/abc_ic_ab_back_material</item>
         <item name="actionModeCloseButtonStyle">@style/Widget.AppCompat.ActionButton.CloseMode</item>
 
@@ -2422,8 +2439,6 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
     <style name="Base.V7.Theme.AppCompat.Light" parent="Platform.AppCompat.Light">
-        <item name="viewInflaterClass">androidx.appcompat.app.AppCompatViewInflater</item>
-
         <item name="windowNoTitle">false</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionBarOverlay">false</item>
@@ -2461,9 +2476,11 @@
         <item name="actionMenuTextColor">?android:attr/textColorPrimaryDisableOnly</item>
 
         <!-- Action Mode -->
+        <item name="actionModeTheme">?attr/actionBarTheme</item>
         <item name="actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
         <item name="actionModeBackground">@drawable/abc_cab_background_top_material</item>
         <item name="actionModeSplitBackground">?attr/colorPrimaryDark</item>
+        <item name="actionModeCloseContentDescription">@string/abc_action_mode_done</item>
         <item name="actionModeCloseDrawable">@drawable/abc_ic_ab_back_material</item>
         <item name="actionModeCloseButtonStyle">@style/Widget.AppCompat.ActionButton.CloseMode</item>
 
@@ -2676,7 +2693,9 @@
         <item name="contentInsetStart">16dp</item>
         <item name="contentInsetStartWithNavigation">@dimen/abc_action_bar_content_inset_with_nav</item>
         <item name="android:paddingLeft">@dimen/abc_action_bar_default_padding_start_material</item>
+        <item name="android:paddingStart">@dimen/abc_action_bar_default_padding_start_material</item>
         <item name="android:paddingRight">@dimen/abc_action_bar_default_padding_end_material</item>
+        <item name="android:paddingEnd">@dimen/abc_action_bar_default_padding_end_material</item>
     </style>
     <style name="Base.Widget.AppCompat.ActionBar" parent="">
         <item name="displayOptions">showTitle</item>
@@ -2756,6 +2775,17 @@
         <item name="titleTextStyle">@style/TextAppearance.AppCompat.Widget.ActionMode.Title</item>
         <item name="subtitleTextStyle">@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle</item>
         <item name="closeItemLayout">@layout/abc_action_mode_close_item_material</item>
+
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="titleMargin">4dp</item>
+        <item name="maxButtonHeight">@dimen/abc_action_bar_default_height_material</item>
+        <item name="buttonGravity">top</item>
+        <item name="contentInsetStart">16dp</item>
+        <item name="contentInsetStartWithNavigation">@dimen/abc_action_bar_content_inset_with_nav</item>
+        <item name="android:paddingLeft">@dimen/abc_action_bar_default_padding_start_material</item>
+        <item name="android:paddingStart">@dimen/abc_action_bar_default_padding_start_material</item>
+        <item name="android:paddingRight">@dimen/abc_action_bar_default_padding_end_material</item>
+        <item name="android:paddingEnd">@dimen/abc_action_bar_default_padding_end_material</item>
     </style>
     <style name="Base.Widget.AppCompat.ActivityChooserView" parent="">
         <item name="android:gravity">center</item>
@@ -3333,9 +3363,9 @@
         <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
         <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
 
-        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_dark</item>
-        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_dark</item>
-        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_dark</item>
+        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl</item>
+        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl</item>
+        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl</item>
     </style>
     <style name="Platform.AppCompat.Light" parent="android:Theme.Holo.Light">
         <item name="android:windowNoTitle">true</item>
@@ -3403,9 +3433,9 @@
         <item name="android:actionModePasteDrawable">?actionModePasteDrawable</item>
         <item name="android:actionModeSelectAllDrawable">?actionModeSelectAllDrawable</item>
 
-        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_light</item>
-        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_light</item>
-        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_light</item>
+        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl</item>
+        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl</item>
+        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl</item>
     </style>
     <style name="Platform.MaterialComponents" parent="Theme.AppCompat"/>
     <style name="Platform.MaterialComponents.Dialog" parent="Theme.AppCompat.Dialog"/>
@@ -3847,6 +3877,7 @@
     <style name="Theme.AppCompat.Dialog.MinWidth" parent="Base.Theme.AppCompat.Dialog.MinWidth"/>
     <style name="Theme.AppCompat.DialogWhenLarge" parent="Base.Theme.AppCompat.DialogWhenLarge">
     </style>
+    <style name="Theme.AppCompat.Empty" parent=""/>
     <style name="Theme.AppCompat.Light" parent="Base.Theme.AppCompat.Light"/>
     <style name="Theme.AppCompat.Light.DarkActionBar" parent="Base.Theme.AppCompat.Light.DarkActionBar"/>
     <style name="Theme.AppCompat.Light.Dialog" parent="Base.Theme.AppCompat.Light.Dialog"/>
@@ -5466,6 +5497,10 @@
              action bar. This will be inherited by any widget inflated
              into the action bar. -->
         <attr format="reference" name="actionBarTheme"/>
+        <!-- Reference to a theme that should be used to inflate the
+             action bar in action mode. This will be inherited by any widget inflated
+             into the action bar. -->
+        <attr format="reference" name="actionModeTheme"/>
         <!-- Reference to a theme that should be used to inflate widgets
              and layouts destined for the action bar. Most of the time
              this will be a reference to the current theme, but when
@@ -5518,9 +5553,11 @@
         <!-- Drawable to use for the Web Search action button in WebView selection action modes -->
         <attr format="reference" name="actionModeWebSearchDrawable"/>
 
+        <!-- Content description to use for the close action mode button -->
+        <attr format="string" name="actionModeCloseContentDescription"/>
+
         <!-- PopupWindow style to use for action modes when showing as a window overlay. -->
         <attr format="reference" name="actionModePopupWindowStyle"/>
-
 
         <!-- =================== -->
         <!-- Text styles -->
@@ -5779,9 +5816,9 @@
         <eat-comment/>
 
         <!-- Animated Drawable to use for single choice indicators. -->
-        <attr format="reference" name="listChoiceIndicatorMultipleAnimated"/>
-        <!-- Animated Drawable to use for multiple choice indicators. -->
         <attr format="reference" name="listChoiceIndicatorSingleAnimated"/>
+        <!-- Animated Drawable to use for multiple choice indicators. -->
+        <attr format="reference" name="listChoiceIndicatorMultipleAnimated"/>
 
     </declare-styleable>
     <declare-styleable name="AspectRatioFrameLayout">
@@ -5936,6 +5973,12 @@
         <!-- Whether to automatically stack the buttons when there is not
              enough space to lay them out side-by-side. -->
         <attr format="boolean" name="allowStacking"/>
+    </declare-styleable>
+    <declare-styleable name="Capability">
+        
+        <attr format="reference" name="queryPatterns"/>
+        
+        <attr format="boolean" name="shortcutMatchRequired"/>
     </declare-styleable>
     <declare-styleable name="CardView">
         <!-- Background color for CardView. -->
@@ -6209,11 +6252,14 @@
     <attr format="float" name="layout_collapseParallaxMultiplier"/>
   </declare-styleable>
     <declare-styleable name="ColorStateListItem">
-        <!-- Base color for this state. -->
+        
         <attr name="android:color"/>
-        <!-- Alpha multiplier applied to the base color. -->
+        
         <attr format="float" name="alpha"/>
         <attr name="android:alpha"/>
+        
+        <attr format="float" name="lStar"/>
+        <attr name="android:lStar"/>
     </declare-styleable>
     <declare-styleable name="CompoundButton">
         <attr name="android:button"/>
@@ -6481,27 +6527,15 @@
     <attr format="dimension" name="lineSpacing"/>
   </declare-styleable>
     <declare-styleable name="FontFamily">
-        <!-- The authority of the Font Provider to be used for the request. -->
+        
         <attr format="string" name="fontProviderAuthority"/>
-        <!-- The package for the Font Provider to be used for the request. This is used to verify
-        the identity of the provider. -->
+        
         <attr format="string" name="fontProviderPackage"/>
-        <!-- The query to be sent over to the provider. Refer to your font provider's documentation
-        on the format of this string. -->
+        
         <attr format="string" name="fontProviderQuery"/>
-        <!-- The sets of hashes for the certificates the provider should be signed with. This is
-        used to verify the identity of the provider, and is only required if the provider is not
-        part of the system image. This value may point to one list or a list of lists, where each
-        individual list represents one collection of signature hashes. Refer to your font provider's
-        documentation for these values. -->
+        
         <attr format="reference" name="fontProviderCerts"/>
-        <!-- The strategy to be used when fetching font data from a font provider in XML layouts.
-        This attribute is ignored when the resource is loaded from code, as it is equivalent to the
-        choice of API between {@link
-    androidx.core.content.res.ResourcesCompat#getFont(Context, int)} (blocking) and
-        {@link
-    androidx.core.content.res.ResourcesCompat#getFont(Context, int, FontCallback, Handler)}
-        (async). -->
+        
         <attr name="fontProviderFetchStrategy">
             <!-- The blocking font fetch works as follows.
               First, check the local cache, then if the requested font is not cached, request the
@@ -6516,39 +6550,30 @@
               fontProviderFetchTimeout will be ignored if async loading is specified. -->
             <enum name="async" value="1"/>
         </attr>
-        <!-- The length of the timeout during fetching. -->
+        
         <attr format="integer" name="fontProviderFetchTimeout">
             <!-- A special value for the timeout. In this case, the blocking font fetching will not
               timeout and wait until a reply is received from the font provider. -->
             <enum name="forever" value="-1"/>
         </attr>
+        
+        <attr format="string" name="fontProviderSystemFontFamily"/>
     </declare-styleable>
     <declare-styleable name="FontFamilyFont">
-        <!-- The style of the given font file. This will be used when the font is being loaded into
-         the font stack and will override any style information in the font's header tables. If
-         unspecified, the value in the font's header tables will be used. -->
+        
         <attr name="fontStyle">
             <enum name="normal" value="0"/>
             <enum name="italic" value="1"/>
         </attr>
-        <!-- The reference to the font file to be used. This should be a file in the res/font folder
-         and should therefore have an R reference value. E.g. @font/myfont -->
+        
         <attr format="reference" name="font"/>
-        <!-- The weight of the given font file. This will be used when the font is being loaded into
-         the font stack and will override any weight information in the font's header tables. Must
-         be a positive number, a multiple of 100, and between 100 and 900, inclusive. The most
-         common values are 400 for regular weight and 700 for bold weight. If unspecified, the value
-         in the font's header tables will be used. -->
+        
         <attr format="integer" name="fontWeight"/>
-        <!-- The variation settings to be applied to the font. The string should be in the following
-         format: "'tag1' value1, 'tag2' value2, ...". If the default variation settings should be
-         used, or the font used does not support variation settings, this attribute needs not be
-         specified. -->
+        
         <attr format="string" name="fontVariationSettings"/>
-        <!-- The index of the font in the tcc font file. If the font file referenced is not in the
-        tcc format, this attribute needs not be specified. -->
+        
         <attr format="integer" name="ttcIndex"/>
-        <!-- References to the framework attrs -->
+        
         <attr name="android:fontStyle"/>
         <attr name="android:font"/>
         <attr name="android:fontWeight"/>
@@ -6575,47 +6600,42 @@
     <declare-styleable name="GifTextureView"><attr format="reference|string" name="gifSource"/><attr format="boolean" name="isOpaque"/></declare-styleable>
     <declare-styleable name="GifView"><attr format="boolean" name="freezesAnimation"/><attr format="integer" name="loopCount"/><attr format="reference" name="gif"/><attr format="boolean" name="paused"/></declare-styleable>
     <declare-styleable name="GradientColor">
-        <!-- Start color of the gradient. -->
+        
         <attr name="android:startColor"/>
-        <!-- Optional center color. -->
+        
         <attr name="android:centerColor"/>
-        <!-- End color of the gradient. -->
+        
         <attr name="android:endColor"/>
-        <!-- Type of gradient. The default type is linear. -->
+        
         <attr name="android:type"/>
 
-        <!-- Only applied to RadialGradient-->
-        <!-- Radius of the gradient, used only with radial gradient. -->
+        
+        
         <attr name="android:gradientRadius"/>
 
-        <!-- Only applied to SweepGradient / RadialGradient-->
-        <!-- X coordinate of the center of the gradient within the path. -->
+        
+        
         <attr name="android:centerX"/>
-        <!-- Y coordinate of the center of the gradient within the path. -->
+        
         <attr name="android:centerY"/>
 
-        <!-- LinearGradient specific -->
-        <!-- X coordinate of the start point origin of the gradient.
-             Defined in same coordinates as the path itself -->
+        
+        
         <attr name="android:startX"/>
-        <!-- Y coordinate of the start point of the gradient within the shape.
-             Defined in same coordinates as the path itself -->
+        
         <attr name="android:startY"/>
-        <!-- X coordinate of the end point origin of the gradient.
-             Defined in same coordinates as the path itself -->
+        
         <attr name="android:endX"/>
-        <!-- Y coordinate of the end point of the gradient within the shape.
-             Defined in same coordinates as the path itself -->
+        
         <attr name="android:endY"/>
 
-        <!-- Defines the tile mode of the gradient. SweepGradient doesn't support tiling. -->
+        
         <attr name="android:tileMode"/>
     </declare-styleable>
     <declare-styleable name="GradientColorItem">
-        <!-- The offset (or ratio) of this current color item inside the gradient.
-             The value is only meaningful when it is between 0 and 1. -->
+        
         <attr name="android:offset"/>
-        <!-- The current color for the offset inside the gradient. -->
+        
         <attr name="android:color"/>
     </declare-styleable>
     <declare-styleable name="LinearConstraintLayout"><attr name="android:orientation"/></declare-styleable>

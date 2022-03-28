@@ -1,66 +1,71 @@
-package com.apprikot.listable.components;
+package com.apprikot.listable.components
 
-import com.apprikot.listable.R;
-import com.apprikot.listable.interfaces.Listable;
-import com.apprikot.listable.interfaces.LoadMore;
-import com.apprikot.listable.interfaces.Releasable;
-import com.apprikot.listable.model.HolderClass;
-import com.apprikot.listable.views.viewholders.LoadingMoreViewHolder;
+import com.apprikot.listable.components.UnderHeaderVo
+import com.apprikot.listable.interfaces.Listable
+import com.apprikot.listable.interfaces.LoadMore
+import com.apprikot.listable.interfaces.Releasable
+import com.apprikot.listable.model.HolderClass
+import com.apprikot.listable.views.viewholders.LoadingMoreViewHolder
+//import com.apprikot.listable.R
+import org.apache.commons.lang3.builder.HashCodeBuilder
+import com.apprikot.listable.components.LoadingMore
+import org.apache.commons.lang3.builder.EqualsBuilder
+import android.os.Bundle
+import com.apprikot.listable.R
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+class LoadingMore : UnderHeaderVo, Listable {
+    private var mLoadMoreAll: LoadMore? = null
+    private var mReleasable: Releasable? = null
+    private val code = 555
 
-public class LoadingMore extends UnderHeaderVo implements Listable {
-    private LoadMore mLoadMore;
-    private Releasable mReleasable;
-    private int code = 555;
-
-    public LoadingMore(LoadMore loadMore) {
-        mLoadMore = loadMore;
+    constructor(loadMore: LoadMore?) {
+        mLoadMoreAll = loadMore
     }
 
-    public LoadingMore() {
-    }
+    constructor() {}
 
-    public void loadMore() {
-        if (mLoadMore != null) {
-            mLoadMore.loadMore();
+    fun loadMore() {
+        if (mLoadMoreAll != null) {
+            mLoadMoreAll!!.loadMore()
         }
     }
 
-    public void setReleasable(Releasable releasable) {
-        mReleasable = releasable;
+    fun setReleasable(releasable: Releasable?) {
+        mReleasable = releasable
     }
 
-    public void release() {
+    fun release() {
         if (mReleasable != null) {
-            mReleasable.release();
+            mReleasable!!.release()
         }
     }
 
-    public LoadingMore(long headerId) {
-        this.headerId = headerId;
+    constructor(headerId: Long) {
+        this.headerId = headerId
     }
 
-    @Override
-    public HolderClass getListItemType() {
-        return new HolderClass(LoadingMoreViewHolder.class, R.layout.item_loading_more);
+//    override fun getListItemType(): HolderClass {
+//        return HolderClass(LoadingMoreViewHolder::class.java, R.layout.item_loading_more)
+//    }
+
+    override fun hashCode(): Int {
+        return HashCodeBuilder().append(code).toHashCode()
     }
 
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(code).toHashCode();
-    }
+    override val listItemTypeAll: HolderClass?
+        get() =  HolderClass(LoadingMoreViewHolder::class.java, R.layout.item_loading_more)
 
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
+//    override fun getListItemTypeAll(): HolderClass {
+//        get() = HolderClass(LoadingMoreViewHolder::class.java, R.layout.item_loading_more)
+//    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other === this) {
+            return true
         }
-        if (!(other instanceof LoadingMore)) {
-            return false;
+        if (other !is LoadingMore) {
+            return false
         }
-        LoadingMore rhs = ((LoadingMore) other);
-        return new EqualsBuilder().append(code, rhs.code).isEquals();
+        return EqualsBuilder().append(code, other.code).isEquals
     }
 }

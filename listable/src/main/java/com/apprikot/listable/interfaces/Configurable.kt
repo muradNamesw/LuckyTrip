@@ -1,19 +1,14 @@
-package com.apprikot.listable.interfaces;
+package com.apprikot.listable.interfaces
 
-public interface Configurable {
-    Configurable config();
+import com.apprikot.listable.interfaces.Configurable
 
-    Configurable hasHeaders(boolean hasHeaders);
-
-    Configurable hasSearch(boolean hasSearch);
-
-    Configurable hasMargins(boolean hasMargins);
-
-    Configurable hasLoadMore(boolean loadMore);
-
-    Configurable hasPullRefresh(boolean hasPullRefresh);
-
-    Configurable fromPageNum(int fromIndex);
-
-    Configurable toPageNum(int toIndex);
+interface Configurable {
+    fun config(): Configurable?
+    fun hasHeaders(hasHeaders: Boolean): Configurable?
+    fun hasSearch(hasSearch: Boolean): Configurable?
+    fun hasMargins(hasMargins: Boolean): Configurable?
+    fun hasLoadMore(loadMore: Boolean): Configurable?
+    fun hasPullRefresh(hasPullRefresh: Boolean): Configurable?
+    fun fromPageNum(fromIndex: Int): Configurable?
+    fun toPageNum(toIndex: Int): Configurable?
 }

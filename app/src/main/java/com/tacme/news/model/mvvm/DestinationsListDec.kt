@@ -163,8 +163,11 @@ class DestinationsListDec : Listable {
         }
     }
 
-    override fun getListItemType(): HolderClass {
-        return HolderClass(ListNavigateDecVH::class.java, R.layout.list_navigate_item_mvvm)
-    }
+    override val listItemTypeAll: HolderClass?
+        get() = HolderClass(ListNavigateDecVH::class.java, R.layout.list_navigate_item_mvvm)
+
+//    fun getListItemTypeAll(): HolderClass {
+//        return HolderClass(ListNavigateDecVH::class.java, R.layout.list_navigate_item_mvvm)
+//    }
 }
 

@@ -1,5 +1,5 @@
-package com.apprikot.listable.interfaces;
+package com.apprikot.listable.interfaces
 
-public interface LoadMore {
-    void loadMore();
+interface LoadMore {
+    fun loadMore()
 }

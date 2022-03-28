@@ -31,9 +31,9 @@ object FileUtils {
         }
         if (result == null) {
             result = uri.path
-            val cut = result.lastIndexOf('/')
+            val cut = result!!.lastIndexOf('/')
             if (cut != -1) {
-                result = result.substring(cut + 1)
+                result = result!!.substring(cut + 1)
             }
         }
         return result
@@ -71,7 +71,7 @@ object FileUtils {
 
     fun getRealPathFromURI_BelowAPI11(context: Context, contentUri: Uri?): String {
         val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+        val cursor = context.contentResolver.query(contentUri!!, proj, null, null, null)
         var column_index = 0
         var result = ""
         if (cursor != null) {
@@ -162,7 +162,7 @@ object FileUtils {
         )
         try {
             cursor = context.contentResolver.query(
-                uri, projection, selection, selectionArgs,
+                uri!!, projection, selection, selectionArgs,
                 null
             )
             if (cursor != null && cursor.moveToFirst()) {
@@ -182,7 +182,7 @@ object FileUtils {
         )
         try {
             cursor = context.contentResolver.query(
-                uri, projection, null, null,
+                uri!!, projection, null, null,
                 null
             )
             if (cursor != null && cursor.moveToFirst()) {

@@ -56,8 +56,8 @@ import com.apprikot.listable.model.HolderClass
 
         var holderClass: HolderClass? = null
         for (item in items) {
-            if (item.listItemType.layoutResId == viewType) {
-                holderClass = item.listItemType
+            if (item.listItemTypeAll!!.layoutResId == viewType) {
+                holderClass = item.listItemTypeAll
                 break
             }
         }
@@ -79,7 +79,7 @@ import com.apprikot.listable.model.HolderClass
     }
 
     override fun getItemViewType(position: Int): Int {
-        return items[position].listItemType.layoutResId
+        return items[position].listItemTypeAll!!.layoutResId
     }
 
     override fun getItemCount(): Int {

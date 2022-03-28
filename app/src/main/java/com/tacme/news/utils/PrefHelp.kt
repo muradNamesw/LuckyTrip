@@ -20,7 +20,7 @@ object PrefHelp {
     }
 
     fun getLang(context: Context): String {
-        return getPrefs(context)!!.getString(LANG, "en")
+        return getPrefs(context)!!.getString(LANG, "en")!!
     }
 
     fun getLocale(context: Context): Locale {
@@ -50,6 +50,6 @@ object PrefHelp {
     }
 
     fun getUdid(context: Context): String {
-        return getPrefs(context)!!.getString(UDID, null)
+        return getPrefs(context)!!.getString(UDID, null)!!
     }
 }

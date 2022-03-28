@@ -8,7 +8,7 @@ import android.widget.Checkable
 import com.tacme.news.components.custom.CheckableImageView
 
 class CheckableImageView(context: Context?, attrs: AttributeSet?) :
-    AppCompatImageView(context, attrs), Checkable {
+    AppCompatImageView(context!!, attrs), Checkable {
     private var mChecked = false
     override fun onCreateDrawableState(extraSpace: Int): IntArray {
         val drawableState = super.onCreateDrawableState(extraSpace + 1)

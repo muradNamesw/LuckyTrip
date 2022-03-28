@@ -4,7 +4,7 @@
             "outputFile": "/Users/muradadnan/Desktop/project/LuckyTrip/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/Users/muradadnan/.gradle/caches/transforms-2/files-2.1/ed17f55e4138e25f0724d526265d2c57/material-1.1.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "/Users/muradadnan/.gradle/caches/transforms-2/files-2.1/08b436b36c5f5c840f91e303fefd6ebe/material-1.1.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

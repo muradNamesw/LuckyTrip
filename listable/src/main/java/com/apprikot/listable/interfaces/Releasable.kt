@@ -1,5 +1,5 @@
-package com.apprikot.listable.interfaces;
+package com.apprikot.listable.interfaces
 
-public interface Releasable {
-    void release();
+interface Releasable {
+    fun release()
 }

@@ -1,9 +1,8 @@
-package com.apprikot.listable.interfaces;
+package com.apprikot.listable.interfaces
 
-import java.util.List;
+import com.apprikot.listable.interfaces.Configurable
 
-public interface Searchable {
-    String getSearchKey();
-    List<String> getSearchKeys();
-
+interface Searchable {
+    val searchKey: String?
+    val searchKeys: List<String?>?
 }

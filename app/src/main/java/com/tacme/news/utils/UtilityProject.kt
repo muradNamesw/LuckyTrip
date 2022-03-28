@@ -105,13 +105,13 @@ object UtilityProject {
         return check
     }
 
-    fun isEmptyList(list: List<*>?): Boolean {
-        var check = false
-        if (list == null && list!!.size == 0) {
-            check = true
-        }
-        return check
-    }
+//    fun isEmptyList(list: List<*>?): Boolean {
+//        var check = false
+//        if (list == null && list!!.si == 0) {
+//            check = true
+//        }
+//        return check
+//    }
 
     fun speed(distance: Double, min: Int): Int {
         return (distance.toFloat() / minToHour(min).toFloat()).toInt()

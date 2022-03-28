@@ -1,7 +1,7 @@
-package com.apprikot.listable.interfaces;
+package com.apprikot.listable.interfaces
 
-import com.apprikot.listable.model.HolderClass;
+import com.apprikot.listable.model.HolderClass
 
-public interface Listable {
-    HolderClass getListItemType();
+interface Listable {
+    val listItemTypeAll: HolderClass?
 }
