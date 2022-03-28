@@ -1,55 +1,40 @@
-package com.tacme.news.components.custom;
+package com.tacme.news.components.custom
 
+import android.content.Context
+import android.util.AttributeSet
+import android.view.View.MeasureSpec
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Created by Eng Murad Ibraheim on 8/11/18.
  */
-import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.ViewGroup;
+class ExpandableHeightRecyclerView : RecyclerView {
+    var isExpanded = false
 
-public class ExpandableHeightRecyclerView extends RecyclerView {
-
-    boolean expanded = false;
-
-    public ExpandableHeightRecyclerView(Context context) {
-        super(context);
+    constructor(context: Context?) : super(context!!) {}
+    constructor(context: Context?, attrs: AttributeSet?) : super(
+        context!!, attrs
+    ) {
     }
 
-    public ExpandableHeightRecyclerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
+        context!!, attrs, defStyle
+    ) {
     }
 
-    public ExpandableHeightRecyclerView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-    }
-
-    public boolean isExpanded() {
-        return expanded;
-    }
-
-    @Override
-    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    public override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         // HACK! TAKE THAT ANDROID!
-        if (isExpanded()) {
+        if (isExpanded) {
 
             // Calculate entire height by providing a very large height hint.
             // View.MEASURED_SIZE_MASK represents the largest height possible.
-            int expandSpec = MeasureSpec.makeMeasureSpec(MEASURED_SIZE_MASK, MeasureSpec.AT_MOST);
-
-            super.onMeasure(widthMeasureSpec, expandSpec);
-
-            ViewGroup.LayoutParams params = getLayoutParams();
-
-            params.height = getMeasuredHeight() + 420;
-
+            val expandSpec = MeasureSpec.makeMeasureSpec(MEASURED_SIZE_MASK, MeasureSpec.AT_MOST)
+            super.onMeasure(widthMeasureSpec, expandSpec)
+            val params = layoutParams
+            params.height = measuredHeight + 420
         } else {
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
-    }
-
-    public void setExpanded(boolean expanded) {
-        this.expanded = expanded;
     }
 }

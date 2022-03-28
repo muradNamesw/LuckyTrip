@@ -1,17 +1,17 @@
-package com.tacme.news.view.utils;
+package com.tacme.news.view.utils
 
-import android.content.Context;
-import android.graphics.Point;
+import android.content.Context
+import android.graphics.Point
 
-public class DimenUtils {
-    public static int pixelsToDp(Context context, int dimenId) {
-        float dimen = context.getResources().getDimension(dimenId);
-        return (int) (dimen / context.getResources().getDisplayMetrics().density);
+object DimenUtils {
+    fun pixelsToDp(context: Context, dimenId: Int): Int {
+        val dimen = context.resources.getDimension(dimenId)
+        return (dimen / context.resources.displayMetrics.density).toInt()
     }
 
-    public static Point getScreenSize(Context context) {
-        int width = context.getResources().getDisplayMetrics().widthPixels;
-        int height = context.getResources().getDisplayMetrics().heightPixels;
-        return new Point(width, height);
+    fun getScreenSize(context: Context): Point {
+        val width = context.resources.displayMetrics.widthPixels
+        val height = context.resources.displayMetrics.heightPixels
+        return Point(width, height)
     }
 }

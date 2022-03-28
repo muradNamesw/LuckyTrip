@@ -1,37 +1,27 @@
-package com.tacme.news.utils;
+package com.tacme.news.utils
 
-import android.app.Activity;
-import android.app.AlertDialog;
-
-import android.content.DialogInterface;
-
-import java.util.List;
-
-import com.tacme.news.R;
-
-
+import android.app.Activity
+import android.app.AlertDialog
+import com.tacme.news.R
+import android.content.DialogInterface
+import com.tacme.news.utils.UtilityProject
 
 /**
  * Created by Eng Murad Ibraheim on 3/20/17.
  */
-
-public class UtilityProject {
-
-
-    public static final String LANGUAGE = "LANGUAGE_PROJECT_TACME_SA";
-    public static final String USER_NAME = "USER_NAME_TACME_SA";
-    public static final String NAME = "NAME_LOGIN_TACME_SA";
-    public static final String TOKEN_LOGIN = "TOKEN_LOGIN_TACME_SA";
-    public static final String LAST_NO = "LAST_NO_TACME_SA";
-    public static final String TYPE_LOGIN = "TYPE_LOGIN_TACME_SA";
-    public static String LANGUAGE_PAGE = "LANGUAGE_PAGE";
-    public static String FIRST_TIME = "FIRST_TIME";
-    public static final String USER_TYPE = "USER_APP_TACME_SA";
-    public static final String USER_ROLES = "USER_ROLES_TACME_SA";
-
-    public static final String arabic = "\u06f0\u06f1\u06f2\u06f3\u06f4\u06f5\u06f6\u06f7\u06f8\u06f9";
-
-    public static void showMessage(Activity mActivity, String message) {
+object UtilityProject {
+    const val LANGUAGE = "LANGUAGE_PROJECT_TACME_SA"
+    const val USER_NAME = "USER_NAME_TACME_SA"
+    const val NAME = "NAME_LOGIN_TACME_SA"
+    const val TOKEN_LOGIN = "TOKEN_LOGIN_TACME_SA"
+    const val LAST_NO = "LAST_NO_TACME_SA"
+    const val TYPE_LOGIN = "TYPE_LOGIN_TACME_SA"
+    var LANGUAGE_PAGE = "LANGUAGE_PAGE"
+    var FIRST_TIME = "FIRST_TIME"
+    const val USER_TYPE = "USER_APP_TACME_SA"
+    const val USER_ROLES = "USER_ROLES_TACME_SA"
+    const val arabic = "\u06f0\u06f1\u06f2\u06f3\u06f4\u06f5\u06f6\u06f7\u06f8\u06f9"
+    fun showMessage(mActivity: Activity, message: String?) {
 //        Toast.makeText(applicationContext.getApplicationContext(), message, Toast.LENGTH_LONG).show();
 //        Cue.init()
 //                .with(applicationContext)
@@ -45,43 +35,32 @@ public class UtilityProject {
 //                .setIcon(R.drawable.ic_settings_white_48dp)
 //                .setIconAnimation(R.animator.iconspin)
 //                .show();
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle(mActivity.getString(R.string.error));
-        builder.setMessage(message);
-        builder.setCancelable(false);
-        builder.setPositiveButton(mActivity.getString(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-//                builder.dim
-            }
-        });
-
-
-        builder.show();
-
-
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setTitle(mActivity.getString(R.string.error))
+        builder.setMessage(message)
+        builder.setCancelable(false)
+        builder.setPositiveButton(mActivity.getString(R.string.ok)) { dialog, which ->
+            //                builder.dim
+        }
+        builder.show()
     }
 
-    public static void showMessage(Activity mActivity, String message, String tittle) {
+    fun showMessage(mActivity: Activity, message: String?, tittle: String?) {
 //        Toast.makeText(applicationContext.getApplicationContext(), message, Toast.LENGTH_LONG).show();
 //        Cue.init()
 //                .with(applicationContext)
 //                .setMessage(message)
 //                .setType(Type.PRIMARY)
 //                .show();
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle(tittle);
-        builder.setMessage(message);
-        builder.setCancelable(false);
-        builder.setPositiveButton(mActivity.getString(R.string.done), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-//                builder.dim
-            }
-        });
-        builder.show();
-//        CookieBar.build(applicationContext)
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setTitle(tittle)
+        builder.setMessage(message)
+        builder.setCancelable(false)
+        builder.setPositiveButton(mActivity.getString(R.string.done)) { dialog, which ->
+            //                builder.dim
+        }
+        builder.show()
+        //        CookieBar.build(applicationContext)
 //                .setTitle(tittle)         // String resources are also supported
 //                .setMessage(message)     // i.e. R.string.message
 //                .setCookiePosition(CookieBar.TOP)
@@ -89,25 +68,19 @@ public class UtilityProject {
 //                .setIcon(R.drawable.ic_i)
 //                .setIconAnimation(R.animator.iconspin)
 //                .show();
-
     }
 
-    public static void showMessageCorrect(Activity mActivity, String message) {
+    fun showMessageCorrect(mActivity: Activity, message: String?) {
 //        Toast.makeText(applicationContext.getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-//        builder.setTitle(mActivity.getString(R.string.info));
-        builder.setMessage(message);
-        builder.setCancelable(false);
-        builder.setPositiveButton(mActivity.getString(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-//                builder.dim
-            }
-        });
-
-
-        builder.show();
-//        Cue.init()
+        val builder = AlertDialog.Builder(mActivity)
+        //        builder.setTitle(mActivity.getString(R.string.info));
+        builder.setMessage(message)
+        builder.setCancelable(false)
+        builder.setPositiveButton(mActivity.getString(R.string.ok)) { dialog, which ->
+            //                builder.dim
+        }
+        builder.show()
+        //        Cue.init()
 //                .with(applicationContext)
 //                .setMessage(message)
 //                .setType(Type.SUCCESS)
@@ -120,87 +93,68 @@ public class UtilityProject {
 //                .setIcon(R.drawable.ic_correct)
 //                .setIconAnimation(R.animator.iconspin)
 //                .show();
-
     }
 
-
-
-
-
-
-
-
-
-    public static boolean isEmptyString(String value) {
-
-        boolean check = false;
-        if (value == null || value.toLowerCase().contains("null") || value.isEmpty() || value.toLowerCase().equals("-9")) {
-            check = true;
+    fun isEmptyString(value: String?): Boolean {
+        var check = false
+        if (value == null || value.toLowerCase()
+                .contains("null") || value.isEmpty() || value.toLowerCase() == "-9"
+        ) {
+            check = true
         }
-        return check;
-
+        return check
     }
 
-    public static boolean isEmptyList(List list) {
-        boolean check = false;
-        if (list == null && list.size() == 0) {
-            check = true;
+    fun isEmptyList(list: List<*>?): Boolean {
+        var check = false
+        if (list == null && list!!.size == 0) {
+            check = true
         }
-        return check;
+        return check
     }
 
-
-
-    public static int speed(double distance, int min) {
-        int speed = (int) ((float) distance / (float) minToHour(min));
-        return speed;
+    fun speed(distance: Double, min: Int): Int {
+        return (distance.toFloat() / minToHour(min).toFloat()).toInt()
     }
 
-    public static double minToHour(int min) {
-        return min / 60;
+    fun minToHour(min: Int): Double {
+        return (min / 60).toDouble()
     }
 
-    public static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
+    fun distance(lat1: Double, lon1: Double, lat2: Double, lon2: Double, unit: Char): Double {
+        val theta = lon1 - lon2
+        var dist =
+            Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(
+                deg2rad(lat2)
+            ) * Math.cos(deg2rad(theta))
+        dist = Math.acos(dist)
+        dist = rad2deg(dist)
+        dist = dist * 60 * 1.1515
         if (unit == 'K') {
-            dist = dist * 1.609344;
+            dist = dist * 1.609344
         } else if (unit == 'N') {
-            dist = dist * 0.8684;
+            dist = dist * 0.8684
         }
-        return (dist);
+        return dist
     }
 
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    /*::  This function converts decimal degrees to radians             :*/
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    static double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/ /*::  This function converts decimal degrees to radians             :*/ /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    fun deg2rad(deg: Double): Double {
+        return deg * Math.PI / 180.0
     }
 
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    /*::  This function converts radians to decimal degrees             :*/
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    static double rad2deg(double rad) {
-        return (rad * 180.0 / Math.PI);
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/ /*::  This function converts radians to decimal degrees             :*/ /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    fun rad2deg(rad: Double): Double {
+        return rad * 180.0 / Math.PI
     }
 
-
-    public static String arabicToDecimal(String number) {
-        char[] chars = new char[number.length()];
-        for (int i = 0; i < number.length(); i++) {
-            char ch = number.charAt(i);
-            if (ch >= 0x0660 && ch <= 0x0669)
-                ch -= 0x0660 - '0';
-            else if (ch >= 0x06f0 && ch <= 0x06F9)
-                ch -= 0x06f0 - '0';
-            chars[i] = ch;
-        }
-        return new String(chars);
-    }
-
-
+//    fun arabicToDecimal(number: String): String {
+//        val chars = CharArray(number.length)
+//        for (i in 0 until number.length) {
+//            var ch = number[i]
+//            if (ch.toInt() >= 0x0660 && ch.toInt() <= 0x0669) (ch -= (0x0660 - '0'.toInt()).toChar()).toChar() else if (ch.toInt() >= 0x06f0 && ch.toInt() <= 0x06F9) (ch -= (0x06f0 - '0'.toInt()).toChar()).toChar()
+//            chars[i] = ch
+//        }
+//        return String(chars)
+//    }
 }

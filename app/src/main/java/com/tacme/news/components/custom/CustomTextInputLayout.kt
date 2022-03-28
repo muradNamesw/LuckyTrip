@@ -1,65 +1,62 @@
-package com.tacme.news.components.custom;
+package com.tacme.news.components.custom
 
-import android.content.Context;
-import com.google.android.material.textfield.TextInputLayout;
-import android.util.AttributeSet;
-import android.widget.Checkable;
+import android.R
+import android.content.Context
+import android.util.AttributeSet
+import android.widget.Checkable
+import com.google.android.material.textfield.TextInputLayout
+import com.tacme.news.components.custom.CustomTextInputLayout
 
 /**
  * Created by Murad Adnan on 2019-07-16.
  */
-public class CustomTextInputLayout extends TextInputLayout implements Checkable {
+class CustomTextInputLayout : TextInputLayout, Checkable {
+    private var mChecked = false
 
-    private boolean mChecked;
-
-    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
-
-
-    public CustomTextInputLayout(Context context) {
-        super(context);
+    constructor(context: Context?) : super(context!!) {}
+    constructor(context: Context?, attrs: AttributeSet?) : super(
+        context!!, attrs
+    ) {
     }
 
-    public CustomTextInputLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context!!, attrs, defStyleAttr
+    ) {
     }
 
-    public CustomTextInputLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    @Override
-    public int[] onCreateDrawableState(final int extraSpace) {
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
-        if (isChecked()) {
-            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+    public override fun onCreateDrawableState(extraSpace: Int): IntArray {
+        val drawableState = super.onCreateDrawableState(extraSpace + 1)
+        if (isChecked) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET)
         }
-        return drawableState;
+        return drawableState
     }
 
-    @Override
-    public void setChecked(boolean checked) {
+    override fun setChecked(checked: Boolean) {
         if (mChecked == checked) {
-            return;
+            return
         }
-        mChecked = checked;
-//        setEnabled(checked);
-        refreshDrawableState();
+        mChecked = checked
+        //        setEnabled(checked);
+        refreshDrawableState()
     }
 
-    @Override
-    public boolean isChecked() {
-        return mChecked;
+    override fun isChecked(): Boolean {
+        return mChecked
     }
 
-    @Override
-    public void toggle() {
-        setChecked(!mChecked);
+    override fun toggle() {
+        isChecked = !mChecked
     }
 
-    public void toggle(boolean animate) {
-        toggle();
+    fun toggle(animate: Boolean) {
+        toggle()
         if (mChecked && animate) {
 //            YoYo.with(Techniques.Pulse).duration(Constants.ANIM_DURATION_PULSE).playOn(this);
         }
+    }
+
+    companion object {
+        private val CHECKED_STATE_SET = intArrayOf(R.attr.state_checked)
     }
 }

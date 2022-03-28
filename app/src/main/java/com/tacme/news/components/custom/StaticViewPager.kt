@@ -1,28 +1,23 @@
-package com.tacme.news.components.custom;
+package com.tacme.news.components.custom
 
-import android.content.Context;
-import androidx.viewpager.widget.ViewPager;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.content.Context
+import android.util.AttributeSet
+import androidx.viewpager.widget.ViewPager
+import android.view.MotionEvent
 
-public class StaticViewPager extends ViewPager {
-    private boolean enabled;
-
-    public StaticViewPager(Context context, AttributeSet attrs) {
-        super(context, attrs);
+class StaticViewPager(context: Context?, attrs: AttributeSet?) : ViewPager(
+    context!!, attrs
+) {
+     private var enabledStaticViewPager = false
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        return enabledStaticViewPager && super.onTouchEvent(event)
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return this.enabled && super.onTouchEvent(event);
+    override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+        return enabledStaticViewPager && super.onInterceptTouchEvent(event)
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        return this.enabled && super.onInterceptTouchEvent(event);
-    }
-
-    public void setPagingEnabled(boolean enabled) {
-        this.enabled = enabled;
+    fun setPagingenabledStaticViewPager(enabledStaticViewPager: Boolean) {
+        this.enabledStaticViewPager = enabledStaticViewPager
     }
 }

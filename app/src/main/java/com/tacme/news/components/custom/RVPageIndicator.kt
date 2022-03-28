@@ -14,23 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.tacme.news.components.custom
 
-package com.tacme.news.components.custom;
-
-import androidx.viewpager.widget.ViewPager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 
 /**
  * A PageIndicator is responsible to show an visual indicator on the total views
  * number and the current visible com.tacme.pass.view.
  */
-public interface RVPageIndicator extends ViewPager.OnPageChangeListener {
+interface RVPageIndicator : OnPageChangeListener {
     /**
      * Bind the indicator to a ViewPager.
      *
      * @param view
      */
-    void setRecyclerView(RecyclerView view);
+    fun setRecyclerView(view: RecyclerView?)
 
     /**
      * Bind the indicator to a ViewPager.
@@ -38,27 +37,30 @@ public interface RVPageIndicator extends ViewPager.OnPageChangeListener {
      * @param view
      * @param initialPosition
      */
-    void setRecyclerView(RecyclerView view, int initialPosition);
+    fun setRecyclerView(view: RecyclerView?, initialPosition: Int)
 
     /**
-     * <p>Set the current page of both the ViewPager and indicator.</p>
-     * <p/>
-     * <p>This <strong>must</strong> be used if you need to set the page before
-     * the views are drawn on screen (e.g., default start page).</p>
+     *
+     * Set the current page of both the ViewPager and indicator.
+     *
+     *
+     *
+     * This **must** be used if you need to set the page before
+     * the views are drawn on screen (e.g., default start page).
      *
      * @param item
      */
-    void setCurrentItem(int item);
+    fun setCurrentItem(item: Int)
 
     /**
      * Set a page change listener which will receive forwarded events.
      *
      * @param listener
      */
-    void setOnPageChangeListener(ViewPager.OnPageChangeListener listener);
+    fun setOnPageChangeListener(listener: OnPageChangeListener?)
 
     /**
      * Notify the indicator that the fragment list has changed.
      */
-    void notifyDataSetChanged();
+    fun notifyDataSetChanged()
 }

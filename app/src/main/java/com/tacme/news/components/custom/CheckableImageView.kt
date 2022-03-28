@@ -1,52 +1,47 @@
-package com.tacme.news.components.custom;
+package com.tacme.news.components.custom
 
-import android.content.Context;
-import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
-import android.widget.Checkable;
+import android.R
+import android.content.Context
+import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatImageView
+import android.widget.Checkable
+import com.tacme.news.components.custom.CheckableImageView
 
-
-public class CheckableImageView extends AppCompatImageView implements Checkable {
-    private boolean mChecked;
-
-    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
-
-    public CheckableImageView(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    @Override
-    public int[] onCreateDrawableState(final int extraSpace) {
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
-        if (isChecked()) {
-            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+class CheckableImageView(context: Context?, attrs: AttributeSet?) :
+    AppCompatImageView(context, attrs), Checkable {
+    private var mChecked = false
+    override fun onCreateDrawableState(extraSpace: Int): IntArray {
+        val drawableState = super.onCreateDrawableState(extraSpace + 1)
+        if (isChecked) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET)
         }
-        return drawableState;
+        return drawableState
     }
 
-    public void toggle(boolean animate) {
-        toggle();
+    fun toggle(animate: Boolean) {
+        toggle()
         if (mChecked && animate) {
 //            YoYo.with(Techniques.Pulse).duration(Constants.ANIM_DURATION_PULSE).playOn(this);
         }
     }
 
-    @Override
-    public void toggle() {
-        setChecked(!mChecked);
+    override fun toggle() {
+        isChecked = !mChecked
     }
 
-    @Override
-    public boolean isChecked() {
-        return mChecked;
+    override fun isChecked(): Boolean {
+        return mChecked
     }
 
-    @Override
-    public void setChecked(boolean checked) {
+    override fun setChecked(checked: Boolean) {
         if (mChecked == checked) {
-            return;
+            return
         }
-        mChecked = checked;
-        refreshDrawableState();
+        mChecked = checked
+        refreshDrawableState()
+    }
+
+    companion object {
+        private val CHECKED_STATE_SET = intArrayOf(R.attr.state_checked)
     }
 }

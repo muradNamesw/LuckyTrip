@@ -1,30 +1,29 @@
-package com.tacme.news.components.custom;
+package com.tacme.news.components.custom
 
-import android.content.Context;
-import androidx.drawerlayout.widget.DrawerLayout;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.content.Context
+import android.util.AttributeSet
+import androidx.drawerlayout.widget.DrawerLayout
+import android.view.MotionEvent
+import java.lang.Exception
 
-public class HackyDrawerLayout extends DrawerLayout {
-    public HackyDrawerLayout(Context context) {
-        super(context);
+class HackyDrawerLayout : DrawerLayout {
+    constructor(context: Context?) : super(context!!) {}
+    constructor(context: Context?, attrs: AttributeSet?) : super(
+        context!!, attrs
+    ) {
     }
 
-    public HackyDrawerLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
+        context!!, attrs, defStyle
+    ) {
     }
 
-    public HackyDrawerLayout(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        try {
-            return super.onInterceptTouchEvent(ev);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+    override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+        return try {
+            super.onInterceptTouchEvent(ev)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
         }
     }
 }

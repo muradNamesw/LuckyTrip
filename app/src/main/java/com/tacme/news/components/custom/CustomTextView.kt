@@ -1,110 +1,100 @@
-package com.tacme.news.components.custom;
+package com.tacme.news.components.custom
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
-import android.widget.Checkable;
+import android.content.Context
+import com.tacme.news.view.utils.FontUtils.getFont
+import androidx.appcompat.widget.AppCompatTextView
+import android.widget.Checkable
+import android.content.res.TypedArray
+import com.tacme.news.R
+import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.util.AttributeSet
+import com.tacme.news.components.custom.CustomTextView
+import com.tacme.news.view.utils.FontUtils
 
-import androidx.appcompat.widget.AppCompatTextView;
+class CustomTextView : AppCompatTextView, Checkable {
+    private var mChecked = false
+    private var background: Drawable? = null
 
-import com.tacme.news.R;
-import com.tacme.news.view.utils.FontUtils;
-
-
-public class CustomTextView extends AppCompatTextView implements Checkable {
-
-    private boolean mChecked;
-    private Drawable background;
-
-
-    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
-
-    public CustomTextView(Context context) {
-        super(context);
-        init(null);
+    constructor(context: Context?) : super(context) {
+        init(null)
     }
 
-    public CustomTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs);
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        init(attrs)
     }
 
-    public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(attrs);
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        init(attrs)
     }
 
-    protected void init(AttributeSet attrs) {
-
-        int ordinal = 1;
-
-        Boolean checked = false;
-
+    protected fun init(attrs: AttributeSet?) {
+        var ordinal = 1
+        var checked = false
         if (attrs != null) {
-            TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomTabLayout);
-            ordinal  = typedArray.getInt(R.styleable.CustomTabLayout_customFont,     0);
-            checked  = typedArray.getBoolean(R.styleable.CustomTabLayout_tabChecked, false);
-            typedArray.recycle();
+            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTabLayout)
+            ordinal = typedArray.getInt(R.styleable.CustomTabLayout_customFont, 0)
+            checked = typedArray.getBoolean(R.styleable.CustomTabLayout_tabChecked, false)
+            typedArray.recycle()
         }
-
-        mChecked = checked;
-
-        Typeface typeface = FontUtils.getFont(getContext(), FontUtils.CustomFont.values()[ordinal]);
-        setTypeface(typeface);
-        background = getBackground();
+        mChecked = checked
+        val typeface = getFont(context, FontUtils.CustomFont.values()[ordinal])
+        setTypeface(typeface)
+        background = getBackground()
     }
 
-    @Override
-    public void setError(CharSequence error) {
-        super.setError(error);
+    override fun setError(error: CharSequence) {
+        super.setError(error)
         if (error == null) {
             if (background != null) {
-                setBackground(background);
+                setBackground(background)
             }
-
         } else {
 //            setBackgroundResource(R.drawable.border_red);
         }
     }
-    public void setFont(FontUtils.CustomFont font) {
-        setTypeface(FontUtils.getFont(getContext(), font));
+
+    fun setFont(font: FontUtils.CustomFont?) {
+        typeface = getFont(context, font!!)
     }
 
-    @Override
-    public int[] onCreateDrawableState(final int extraSpace) {
-        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
-        if (isChecked()) {
-            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+    public override fun onCreateDrawableState(extraSpace: Int): IntArray {
+        val drawableState = super.onCreateDrawableState(extraSpace + 1)
+        if (isChecked) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET)
         }
-        return drawableState;
+        return drawableState
     }
 
-    @Override
-    public void setChecked(boolean checked) {
+    override fun setChecked(checked: Boolean) {
         if (mChecked == checked) {
-            return;
+            return
         }
-        mChecked = checked;
-//        setEnabled(checked);
-        refreshDrawableState();
+        mChecked = checked
+        //        setEnabled(checked);
+        refreshDrawableState()
     }
 
-    @Override
-    public boolean isChecked() {
-        return mChecked;
+    override fun isChecked(): Boolean {
+        return mChecked
     }
 
-    @Override
-    public void toggle() {
-        setChecked(!mChecked);
+    override fun toggle() {
+        isChecked = !mChecked
     }
 
-    public void toggle(boolean animate) {
-        toggle();
+    fun toggle(animate: Boolean) {
+        toggle()
         if (mChecked && animate) {
 //            YoYo.with(Techniques.Pulse).duration(Constants.ANIM_DURATION_PULSE).playOn(this);
         }
+    }
+
+    companion object {
+        private val CHECKED_STATE_SET = intArrayOf(android.R.attr.state_checked)
     }
 }

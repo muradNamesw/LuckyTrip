@@ -1,135 +1,134 @@
-package com.tacme.news.view.utils;
+package com.tacme.news.view.utils
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Parcelable;
-import androidx.fragment.app.Fragment;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.R
+import android.widget.EditText
+import android.app.Activity
+import android.content.res.Resources
+import com.tacme.news.components.custom.CustomTextView
+import android.os.Parcelable
+import android.os.Bundle
+import android.util.TypedValue
+import android.util.DisplayMetrics
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
+import java.lang.Exception
 
-import com.tacme.news.components.custom.CustomTextView;
-
-
-public class ViewUtils {
-    public static void hideKeyboard(EditText... editTexts) {
-        for (EditText editText : editTexts) {
+object ViewUtils {
+    fun hideKeyboard(vararg editTexts: EditText?) {
+        for (editText in editTexts) {
             if (editText == null) {
-                continue;
+                continue
             }
-
-            editText.clearFocus();
-            InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+            editText.clearFocus()
+            val imm =
+                editText.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(editText.windowToken, 0)
         }
     }
 
-    public static void showKeyboard(EditText editText) {
+    fun showKeyboard(editText: EditText?) {
         if (editText == null) {
-            return;
+            return
         }
-        editText.requestFocus();
-        InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInputFromWindow(editText.getApplicationWindowToken(), InputMethodManager.SHOW_FORCED, 0);
+        editText.requestFocus()
+        val imm =
+            editText.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInputFromWindow(
+            editText.applicationWindowToken,
+            InputMethodManager.SHOW_FORCED,
+            0
+        )
     }
 
-    public static void setConditioned(CustomTextView textView, String text, boolean isValid) {
+    fun setConditioned(textView: CustomTextView, text: String?, isValid: Boolean) {
         if (isValid) {
-            textView.setVisibility(View.VISIBLE);
-            textView.setText(text);
+            textView.visibility = View.VISIBLE
+            textView.text = text
         } else {
-            textView.setVisibility(View.GONE);
+            textView.visibility = View.GONE
         }
     }
 
-    public static void setWithDefault(CustomTextView textView, String text, String defaultText) {
-        boolean isValid = text != null && !text.trim().isEmpty();
-        textView.setText(isValid ? text : defaultText);
+    fun setWithDefault(textView: CustomTextView, text: String?, defaultText: String?) {
+        val isValid = text != null && !text.trim { it <= ' ' }.isEmpty()
+        textView.text = if (isValid) text else defaultText
     }
-
-//    public static int getFullImageWidth(Context context, boolean hasMargins) {
-//        int screenWidth = DimenUtils.getScreenSize(context).x;
-//        int dimenRedId = hasMargins ? R.dimen.margin8 : R.dimen.margin4;
-//        int margins = (int) (context.getResources().getDimension(dimenRedId) * 2);
-//        return screenWidth - margins;
-//    }
-
-
-
+    //    public static int getFullImageWidth(Context context, boolean hasMargins) {
+    //        int screenWidth = DimenUtils.getScreenSize(context).x;
+    //        int dimenRedId = hasMargins ? R.dimen.margin8 : R.dimen.margin4;
+    //        int margins = (int) (context.getResources().getDimension(dimenRedId) * 2);
+    //        return screenWidth - margins;
+    //    }
     /***
      * New-Instance
-     ***/
-
-    public static final String EXTRA_PARCELABLE = "PARCELABLE";
-    public static final String EXTRA_LONG = "INTEGER";
-    public static final String EXTRA_LIST_PARCELABLE = "LIST_PARCELABLE";
-    public static final String EXTRA_AD = "AD";
-
-    @Deprecated
-    public static Fragment newInstance(Class fragmentClass, Parcelable parcelable) {
+     */
+    const val EXTRA_PARCELABLE = "PARCELABLE"
+    const val EXTRA_LONG = "INTEGER"
+    const val EXTRA_LIST_PARCELABLE = "LIST_PARCELABLE"
+    const val EXTRA_AD = "AD"
+    @Deprecated("")
+    fun newInstance(fragmentClass: Class<*>, parcelable: Parcelable?): Fragment {
         try {
-            Fragment fragment = (Fragment) fragmentClass.newInstance();
-            Bundle data = new Bundle();
-            data.putParcelable(EXTRA_PARCELABLE, parcelable);
-            fragment.setArguments(data);
-            return fragment;
-        } catch (Exception e) {
-            e.printStackTrace();
+            val fragment = fragmentClass.newInstance() as Fragment
+            val data = Bundle()
+            data.putParcelable(EXTRA_PARCELABLE, parcelable)
+            fragment.arguments = data
+            return fragment
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        return new Fragment();
+        return Fragment()
     }
 
-
-
-    @Deprecated
-    public static Fragment newInstance(Class fragmentClass, long extraLong) {
+    @Deprecated("")
+    fun newInstance(fragmentClass: Class<*>, extraLong: Long): Fragment {
         try {
-            Fragment fragment = (Fragment) fragmentClass.newInstance();
-            Bundle data = new Bundle();
-            data.putLong(EXTRA_LONG, extraLong);
-            fragment.setArguments(data);
-            return fragment;
-        } catch (Exception e) {
-            e.printStackTrace();
+            val fragment = fragmentClass.newInstance() as Fragment
+            val data = Bundle()
+            data.putLong(EXTRA_LONG, extraLong)
+            fragment.arguments = data
+            return fragment
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        return new Fragment();
+        return Fragment()
     }
 
-    @Deprecated
-    public static Fragment newInstance(Class fragmentClass, Parcelable parcelable, long extraLong) {
+    @Deprecated("")
+    fun newInstance(fragmentClass: Class<*>, parcelable: Parcelable?, extraLong: Long): Fragment {
         try {
-            Fragment fragment = (Fragment) fragmentClass.newInstance();
-            Bundle data = new Bundle();
-            data.putParcelable(EXTRA_PARCELABLE, parcelable);
-            data.putLong(EXTRA_LONG, extraLong);
-            fragment.setArguments(data);
-            return fragment;
-        } catch (Exception e) {
-            e.printStackTrace();
+            val fragment = fragmentClass.newInstance() as Fragment
+            val data = Bundle()
+            data.putParcelable(EXTRA_PARCELABLE, parcelable)
+            data.putLong(EXTRA_LONG, extraLong)
+            fragment.arguments = data
+            return fragment
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        return new Fragment();
+        return Fragment()
     }
 
     /***
      * Tool-Bar
-     ***/
-    public static int toolbarHeight = -1;
-
-    public static int getToolbarHeight(Activity activity) {
-        if (activity == null) return -1;
+     */
+    var toolbarHeight = -1
+    fun getToolbarHeight(activity: Activity?): Int {
+        if (activity == null) return -1
         if (toolbarHeight == -1) {
-            TypedValue tv = new TypedValue();
-            if (activity.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-                toolbarHeight = TypedValue.complexToDimensionPixelSize(tv.data, activity.getResources().getDisplayMetrics());
+            val tv = TypedValue()
+            if (activity.theme.resolveAttribute(R.attr.actionBarSize, tv, true)) {
+                toolbarHeight = TypedValue.complexToDimensionPixelSize(
+                    tv.data,
+                    activity.resources.displayMetrics
+                )
             }
         }
-        return toolbarHeight;
-    }
-    public static int dpToPx(final float dp) {
-        return Math.round(dp * (Resources.getSystem().getDisplayMetrics().xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return toolbarHeight
     }
 
+    fun dpToPx(dp: Float): Int {
+        return Math.round(dp * (Resources.getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+    }
 }

@@ -1,71 +1,55 @@
-package com.tacme.news.utils;
+package com.tacme.news.utils
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Context
+import android.content.SharedPreferences
+import com.tacme.news.utils.PrefHelp
+import java.util.*
 
-import java.util.Locale;
-
-
-public class PrefHelp {
-    private static SharedPreferences prefs = null;
-    private static final String LANG = "lang";
-    private static final String USER = "USER";
-
-    private static final String UDID = "UDID";
-
-    private static final String LAST_CHECK_IN = "LAST_CHECK_IN";
-
-    private static final String QUERIES_HISTORY = "QUERIES_HISTORY";
-
-    private static SharedPreferences getPrefs(Context context) {
+object PrefHelp {
+    private var prefs: SharedPreferences? = null
+    private const val LANG = "lang"
+    private const val USER = "USER"
+    private const val UDID = "UDID"
+    private const val LAST_CHECK_IN = "LAST_CHECK_IN"
+    private const val QUERIES_HISTORY = "QUERIES_HISTORY"
+    private fun getPrefs(context: Context): SharedPreferences? {
         if (prefs == null) {
-            prefs = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+            prefs = context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
         }
-        return prefs;
+        return prefs
     }
 
-    public static String getLang(Context context) {
-        return getPrefs(context).getString(LANG, "en");
+    fun getLang(context: Context): String {
+        return getPrefs(context)!!.getString(LANG, "en")
     }
 
-    public static Locale getLocale(Context context) {
-        return getLang(context).equals("en")?Locale.ENGLISH:new Locale("ar");
+    fun getLocale(context: Context): Locale {
+        return if (getLang(context) == "en") Locale.ENGLISH else Locale("ar")
     }
 
-
-    public static void setLang(Context context, String lang) {
-        SharedPreferences.Editor prefEditor = getPrefs(context).edit();
-        prefEditor.putString(LANG, lang).apply();
+    fun setLang(context: Context, lang: String?) {
+        val prefEditor = getPrefs(context)!!.edit()
+        prefEditor.putString(LANG, lang).apply()
     }
 
-
-
-
-
-
-    public static boolean isEnglish(Context context) {
-        return getLang(context).equals("en");
+    fun isEnglish(context: Context): Boolean {
+        return getLang(context) == "en"
     }
 
-
-    public static String getAppLang(Context context) {
-        return getPrefs(context).getString(LANG, "en").equals("en") ? "en" : "ar";
+    fun getAppLang(context: Context): String {
+        return if (getPrefs(context)!!.getString(LANG, "en") == "en") "en" else "ar"
     }
 
-
-    public static void logout(Context context) {
-        getPrefs(context).edit().remove(USER).apply();
+    fun logout(context: Context) {
+        getPrefs(context)!!.edit().remove(USER).apply()
     }
 
-
-    public static void setUdid(Context context, String udid) {
-        SharedPreferences.Editor prefEditor = getPrefs(context).edit();
-        prefEditor.putString(UDID, udid).apply();
+    fun setUdid(context: Context, udid: String?) {
+        val prefEditor = getPrefs(context)!!.edit()
+        prefEditor.putString(UDID, udid).apply()
     }
 
-    public static String getUdid(Context context) {
-        return getPrefs(context).getString(UDID, null);
+    fun getUdid(context: Context): String {
+        return getPrefs(context)!!.getString(UDID, null)
     }
-
-
 }
