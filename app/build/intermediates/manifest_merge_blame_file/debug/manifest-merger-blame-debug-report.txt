@@ -59,64 +59,63 @@
 30-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:20:9-48
 31        android:supportsRtl="true"
 31-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:21:9-35
-32        android:testOnly="true"
-33        android:theme="@style/AppTheme"
-33-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:22:9-40
-34        android:usesCleartextTraffic="true" >
-34-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:25:9-44
-35
-36        <!-- <activity -->
-37        <!-- android:name=".view.LoginActivity" -->
-38        <!-- android:label="@string/app_name" -->
-39        <!-- android:screenOrientation="portrait" -->
-40        <!-- android:theme="@style/AppThemeNoStatusBar"> -->
-41        <!-- <intent-filter> -->
-42        <!-- <action android:name="android.intent.action.MAIN" /> -->
+32        android:theme="@style/AppTheme"
+32-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:22:9-40
+33        android:usesCleartextTraffic="true" >
+33-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:25:9-44
+34
+35        <!-- <activity -->
+36        <!-- android:name=".view.LoginActivity" -->
+37        <!-- android:label="@string/app_name" -->
+38        <!-- android:screenOrientation="portrait" -->
+39        <!-- android:theme="@style/AppThemeNoStatusBar"> -->
+40        <!-- <intent-filter> -->
+41        <!-- <action android:name="android.intent.action.MAIN" /> -->
+42
 43
-44
-45        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-46        <!-- </intent-filter> -->
-47        <!-- </activity> -->
-48        <activity
-48-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:38:9-50:20
-49            android:name="com.tacme.news.view.mvvm.MainNewsMVVMActivity"
-49-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:39:13-59
-50            android:label="@string/app_name"
-50-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:40:13-45
-51            android:screenOrientation="portrait"
-51-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:41:13-49
-52            android:theme="@style/AppThemeNoStatusBar" >
-52-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:42:13-55
-53            <intent-filter>
-53-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:44:13-48:29
-54                <action android:name="android.intent.action.MAIN" />
-54-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:45:17-69
-54-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:45:25-66
-55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:47:17-77
-56-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:47:27-74
-57            </intent-filter>
-58        </activity>
-59
-60        <provider
-60-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
-61            android:name="com.squareup.picasso.PicassoProvider"
-61-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
-62            android:authorities="com.lucktrip.news.com.squareup.picasso"
-62-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
-63            android:exported="false" />
-63-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
-64        <provider
-64-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
-65            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-65-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
-66            android:authorities="com.lucktrip.news.lifecycle-process"
-66-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
-67            android:exported="false"
-67-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
-68            android:multiprocess="true" />
-68-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
-69    </application>
-70
-71</manifest>
+44        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+45        <!-- </intent-filter> -->
+46        <!-- </activity> -->
+47        <activity
+47-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:38:9-50:20
+48            android:name="com.tacme.news.view.mvvm.MainNewsMVVMActivity"
+48-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:39:13-59
+49            android:label="@string/app_name"
+49-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:40:13-45
+50            android:screenOrientation="portrait"
+50-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:41:13-49
+51            android:theme="@style/AppThemeNoStatusBar" >
+51-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:42:13-55
+52            <intent-filter>
+52-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:44:13-48:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:45:17-69
+53-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:45:25-66
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:47:17-77
+55-->/Users/muradadnan/Desktop/project/LuckyTrip/app/src/main/AndroidManifest.xml:47:27-74
+56            </intent-filter>
+57        </activity>
+58
+59        <provider
+59-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+60            android:name="com.squareup.picasso.PicassoProvider"
+60-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+61            android:authorities="com.lucktrip.news.com.squareup.picasso"
+61-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+62            android:exported="false" />
+62-->[com.squareup.picasso:picasso:2.71828] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/f8d5f288903e2fd6aca46a26b0d49bf2/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+63        <provider
+63-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+64            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+64-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+65            android:authorities="com.lucktrip.news.lifecycle-process"
+65-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+66            android:exported="false"
+66-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+67            android:multiprocess="true" />
+67-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/muradadnan/.gradle/caches/transforms-2/files-2.1/d34c614799c77140a0b82395516c0abf/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+68    </application>
+69
+70</manifest>
